@@ -1,27 +1,70 @@
 import useInfoSectionStyles from './InfoSection.style'
-import { ReactChild, FC } from 'react'
-import { Box } from '@mui/material'
+import {ReactChild, FC} from 'react'
+import {Box, useTheme} from '@mui/material'
 import Mountains from '@/img/mountains.png'
-const { log } = console
+import secondaryHeader from "@/components/SecondaryHeader/SecondaryHeader";
+import SecondaryHeader from "@/components/SecondaryHeader/SecondaryHeader";
+import PrimaryHeader from "@/components/PrimaryHeader/PrimaryHeader";
+import SecondaryButton from "@/components/SecondaryButton/SecondaryButton";
+import theme from "@/theme";
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Text from "@/components/Text/Text";
+const {log} = console
 
 interface InfoSectionProps {
-   
-   children?: ReactChild,
-   
+
+    children?: ReactChild,
+
 }
 
-const InfoSection: FC<InfoSectionProps> = ({ children }) => {
-const S = useInfoSectionStyles()
+const InfoSection: FC<InfoSectionProps> = ({children}) => {
 
-    return(
-      <S.InfoSection container className="InfoSection">
-          <S.InfoSectionItem item md={5}>
-              <img src={Mountains} alt=""/>
-          </S.InfoSectionItem>
-          <S.InfoSectionItem item md={5}>
+    const Styles = useInfoSectionStyles()
+    const theme = useTheme()
 
-          </S.InfoSectionItem>
-      </S.InfoSection>
+    return (
+        <>
+            <a style={{visibility: 'hidden'}} id={'down'}/>
+            <Box component={Styles} className="InfoSection">
+
+
+
+                <Box className={'InfoSection__item'}>
+                    <img src={Mountains} alt=""/>
+                </Box>
+
+
+
+                <Box className={'InfoSection__item right'}>
+
+                    <SecondaryHeader outlined={'left'}>
+                        EAST nUSA TENGGARA
+                    </SecondaryHeader>
+
+                    <PrimaryHeader>
+                        Have you <br /> enjoyed your <br />holiday?
+                    </PrimaryHeader>
+                    <Text>
+                        You will be amazed if you take part in this sailing Komodo island tour package. So it is also mandatory
+                        for you, besides enjoying Komodo tourism on Komodo Island, you also have to taste the marine tourism.
+                        The beautiful waters of Komodo will make you meet many travelers from other countries.
+                    </Text>
+
+                    <br/>
+
+                    <SecondaryButton
+
+                        icon={<ArrowForwardIcon/>}
+                        color={theme.palette.text.secondary}
+
+                    >
+                        read more
+                    </SecondaryButton>
+
+                </Box>
+
+            </Box>
+        </>
     )
 }
 export default InfoSection

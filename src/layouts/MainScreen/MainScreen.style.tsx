@@ -1,83 +1,112 @@
 import {
     Box,
-    styled,
+
     useTheme
 
 } from "@mui/material"
 import Background from "@/img/background.png";
 import {sitePadding} from "../../theme/GlobalStyle";
+import styled from "styled-components";
 
 function useMainScreenStyles() {
 
     const theme = useTheme()
 
-    return {
+    return styled.section`
+      height: 1573px;
+      width: 100%;
+      background: url(${Background}) no-repeat center/cover;
 
-        MainScreen: styled(Box)({
-            height: '100vh',
-            width: '100%',
-            backgroundColor: theme.palette.secondary.main,
-            backgroundImage: `url(${Background})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-            padding: sitePadding,
-            display: "flex",
-            justifyContent: 'center',
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-bottom: 10%;
+      overflow: hidden;
+      margin-bottom: 2%;
 
-            paddingBottom: '10%',
-            overflow: 'hidden',
-            marginBottom: '2%',
+      ${theme.breakpoints.down('sm')} {
+        padding: 0 5px;
+        
+        .SocialIcons {
+          display: none;
+        }
+      }
 
+      .MainScreen__Item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        width: 100%;
+        height: 100vh;
 
+        ${theme.breakpoints.down('sm')} {
+          margin-top: 10vh;
+        }
 
-        }),
-        MainScreen__Item: styled(Box)({
-            marginTop: '7%',
-            display: 'flex',
-            justifyContent: 'center',
-            flexDirection: 'column',
-            overflow: 'hidden',
-            'img': {
-                overflow: 'hidden',
-                objectFit: 'cover',
+        img {
+          overflow: hidden;
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
 
-                height: '100%',
-                width: '100%',
+        }
+
+        ${theme.breakpoints.up('sm')} {
+          .Mainscreen__down-button {
+
+            & svg {
+              transition: transform 500ms;
             }
 
-        }),
-        MainScreen__header: styled(Box)({
-
-            '& > h1': {
-                color: theme.palette.text.primary,
-                "fontFamily": "Open Sans",
-                "fontSize": "96px",
-                "fontWeight": "900",
-                "lineHeight": "100px",
-                "letterSpacing": "0em",
-                "textAlign": "left",
-                '& > span': {
-
-                    "fontFamily": "Open Sans",
-                    "fontSize": "88px",
-                    "fontWeight": "400",
-                    "lineHeight": "100px",
-                    "letterSpacing": "0em",
-                    "textAlign": "left"
-
-                }
+            &:hover svg {
+              transform: translateY(15%);
             }
-        }),
-        MainScreen__text: styled(Box)({
+          }
+        }
+      }
 
+      .MainScreen__header {
 
-            "fontSize": "18px",
-            "fontWeight": "400",
-            "lineHeight": "30px",
-            "letterSpacing": "-0.02em",
-            "textAlign": "left",
-        }),
-    }
+        color: ${theme.palette.text.primary};
+        font-family: 'Open Sans';
+        font-size: 96px;
+        font-weight: 900;
+        
+        letter-spacing: 0em;
+        text-align: left;
+
+        ${theme.breakpoints.down('sm')} {
+          font-size: 46px;
+          line-height: 100%;
+        }
+
+        span {
+          font-family: 'Open Sans';
+          font-size: 88px;
+          font-weight: 400;
+          
+          letter-spacing: 0em;
+          text-align: left;
+
+          ${theme.breakpoints.down('sm')} {
+            font-size: 38px;
+          }
+
+        }
+
+        .MainScreen__text {
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 30px;
+          letter-spacing: -0.02em;
+          text-align: left;
+        }
+
+      }
+    `
+
 }
 
 export default useMainScreenStyles

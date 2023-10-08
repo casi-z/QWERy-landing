@@ -1,39 +1,47 @@
-import { ReactChild, FC } from 'react'
-import {Box, Button, styled} from '@mui/material'
+import {ReactChild, FC} from 'react'
+import {Box, Button, useTheme} from '@mui/material'
+import styled from "styled-components";
 
-const { log } = console
+const {log} = console
 
 interface SecondaryButtonProps {
-   
+
     children: ReactChild,
     icon?: ReactChild,
-    color?: 'string'
-   
+    color?: String,
+    className?: string,
+    href?: string,
+
 }
 
-const S_SecondaryButton = styled(Button)(({ theme }) => ({
-    textTransform: 'none',
-    color: theme.palette.text.primary,
-    "fontFamily": "Open Sans",
-    "fontSize": "18px",
-    "fontWeight": "600",
-    "lineHeight": "25px",
-    "letterSpacing": "0px",
-    "textAlign": "left",
 
-}))
+const SecondaryButton: FC<SecondaryButtonProps> = ({className, children, icon, color, href}) => {
 
-const SecondaryButton: FC<SecondaryButtonProps> = ({ children, icon, color }) => {
+    const theme = useTheme()
 
-    return(
-       <S_SecondaryButton
-           className="SecondaryButton"
-           endIcon={icon || null}
-           variant={'text'}
+    const Styles = styled.a`
+      text-transform: none;
+      color: ${String(color) || theme.palette.text.primary};
+      font-family: 'Open Sans';
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 25px;
+      letter-spacing: 0;
+      text-align: left;
+      min-width: 10px;
+      white-space: nowrap;
+    `
+    return (
+        <Button
+            component={Styles}
+            className={`SecondaryButton ${className}`}
+            endIcon={icon || null}
+            variant={'text'}
+            href={href}
 
-       >
-           {children}
-       </S_SecondaryButton>
+        >
+            {children}
+        </Button>
     )
 }
 export default SecondaryButton

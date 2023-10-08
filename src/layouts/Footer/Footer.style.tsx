@@ -1,96 +1,144 @@
 import {
     Box,
     Button,
-    styled,
     useTheme
 } from "@mui/material"
+import styled from "styled-components";
+
 import { sitePadding } from "../../theme/GlobalStyle"
-import useConstants from "@/theme/constants";
 
 
 function useFooterStyles() {
-    const constants = useConstants()
+
     const theme = useTheme()
 
-    return {
-        Footer: styled(Box)({
-            marginTop: '5vh',
-            width: '100%',
-            background: theme.palette.secondary.light,
-            padding: sitePadding,
-            paddingTop: '2%',
-            paddingBottom: ' 1.5%',
-            display: 'flex',
-            justifyContent: 'space-between',
-            color: theme.palette.primary.main,
-
-        }),
-
-        Footer__Info: styled(Box)({
-            listStyle: 'none',
-            padding: 0,
-        }),
-
-        Footer__Buttons: styled(Box)({
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center',
-        }),
-
-        Footer__ButtonsWrapper: styled(Box)({
-            width: "100%",
-            display: "flex",
-            justifyContent: "space-between"
-        }),
-
-        Footer__Button: styled(Button)({
-            "padding": "1vh",
-            "marginTop": "10%",
-            "display": "flex",
-            "justifyContent": "center",
-            "alignItems": "center",
-            "background": "theme.palette.secondary.main",
-            "borderRadius": "0",
-            "transitionDuration": "800ms",
-            svg: {
-                "fill": "black",
-                "transitionDuration": "800ms"
-            },
-            "&hover": {
-                "background": "${theme.palette.primary.light"
-            },
-            "&hover > svg": {
-                "filter": "invert(100%)"
-            }
-        }),
-
-        Footer__Link: styled(Box)({
-            "color": "inherit",
-            "font": "inherit",
-            "display": "flex",
-            "justifyContent": "center",
-            "alignItems": "center",
-            "flexDirection": "column",
-            '.Footer__GithubLink': {
-                "color": "inherit",
-                "font": "inherit",
-                "display": "flex",
-                "justifyContent": "center",
-                "alignItems": "center",
-                "flexDirection": "column",
-
-            },
-            [`@media screen and (max-width: ${theme.breakpoints.values.sm}px)`]: {
-                padding: 0,
-                ".Footer__GithubLink": {
-                    "paddingTop": "3vh",
-                    "paddingBottom": "3vh"
-                }
-            }
-        }),
+    return styled.footer`
+      
+      padding: ${sitePadding};
+      
+      ${theme.breakpoints.down('sm')}{
+        padding: 0 5px;
+        padding-top: 20vh;
+      }
+      
+      padding-top: 20vh;
+      width: 100%;
+      overflow: hidden;
         
+        .footer__header{
+          
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          
+          ${theme.breakpoints.down('sm')}{
+            flex-direction: column;
+            
+          }
+          
+          
+          svg{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          
+          
+          .footer__buttons{
+            display: flex;
+            //width: 100%;
+          }
+          
+          button{
+            white-space: nowrap;
+            
+          }
+          
+          .SecondaryButton{
+            margin-right: 4vw;
+            
+          }
+          
+          .PrimaryButton{
+            padding: 2vh 3vw;
+            
+          }
+          
+        }
 
-    }
+      .footer__divider{
+        opacity: 0.3;
+        margin: 4vh 0;
+      }
+      
+      .footer__body{
+        
+        display: flex;
+        justify-content: space-between;
+
+        ${theme.breakpoints.down('sm')}{
+          flex-direction: column;
+          align-items: center;
+          
+        }
+        
+        ul{
+          list-style: none;
+          padding: 0;
+          ${theme.breakpoints.down('sm')}{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+          }
+          
+        }
+        li{
+          padding-top: 1vh;
+        }
+        
+        .SecondaryHeader{
+          font-size: 20px;
+          font-weight: 700;
+          text-transform: capitalize;
+          letter-spacing: -0.232px;
+          
+        }
+        
+      }
+      .footer__bottom{
+        
+        display: flex;
+        justify-content: space-between;
+
+        ${theme.breakpoints.down('sm')}{
+          flex-direction: column;
+          margin-top: 3vh;
+          align-items: center;
+          gap: 1vh;
+
+        }
+        
+        
+        
+        .footer__link{
+          padding: 0 1vw;
+        }
+        .footer__social-icons {
+
+          display: flex;
+          
+          .social-icon {
+            padding-left: 1vw;
+            svg{
+              color: yellow;
+            }
+          }
+        }
+      }
+      
+    `
+
 }
 export default useFooterStyles

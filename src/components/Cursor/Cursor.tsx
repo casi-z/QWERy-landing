@@ -6,13 +6,13 @@ import {
 
 import {
     Box,
-    styled,
     useTheme
 } from '@mui/material'
 
-import './Cursor.css' //Файл отключает стандартный курсор везде
+import './Cursor.css'
+import styled from "styled-components"; //Файл отключает стандартный курсор везде
 
-const { log } = console
+const {log} = console
 
 /*
  Этот компонент добавляет кастомный курсор
@@ -21,8 +21,8 @@ const { log } = console
 const Cursor: FC = () => {
 
     const [cursorParams, setCursorParams] = useState({
-        X: -1000,
-        Y: -1000,
+        X: 0,
+        Y: 0,
         style: 'none',
     })
 
@@ -30,36 +30,53 @@ const Cursor: FC = () => {
 
     const isCursorVisible = theme.breakpoints.down('sm')
 
-    const S_Cursor = styled(Box)({
+    const Styles = styled.div`
+      
+      mix-blend-mode: difference;
+      position: fixed;
+      z-index: 99;
+      top: ${cursorParams.Y}px;
+      left: ${cursorParams.X}px;
+      width: 1.7vw;
+      height: 1.7vw;
+      border-radius: 50%;
+      transition-property: transform, background, border;
+      transition-duration: 400ms;
+      pointer-events: none;
 
-        mixBlendMode: 'difference', //Инверсия цветов
-        position: "fixed",
-        zIndex: 99,
-        top: cursorParams.Y,
-        left: cursorParams.X,
-        width: '1.7vw',
-        height: '1.7vw',
-        borderRadius: '50%',
-        transitionProperty: 'transform, background, border',
-        transitionDuration: '400ms',
-        pointerEvents: 'none',
-        border: cursorParams.style === 'pointer'
-            ? '2px solid white'
-            : 'none'
-        ,
+      background: ${cursorParams.style === 'pointer' ? 'none' : 'white'};
 
-        background: cursorParams.style === 'pointer' ? 'none' : 'white',
+      transform: ${cursorParams.style === 'pointer'
+              ? 'scale(1.6) translate(-50%, -50%)'
+              : 'translate(-50%, -50%)'
+      };
+      
+      border: ${cursorParams.style === 'pointer'
+              ? '2px solid white'
+              : 'none'
+        
+      };
+      
+      ${theme.breakpoints.down('sm')}{
+        display: none;
+      }
+      
 
-        transform: cursorParams.style === 'pointer'
-            ? 'scale(1.6) translate(-50%, -50%)'
-            : 'translate(-50%, -50%)'
-        ,
-        // Убираем курсор на планшетах и телефонах
-        [theme.breakpoints.down('sm')]: {
-            display: 'none',
-        },
-
-    })
+    `
+    // const S_Cursor = styled(Box)({
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //     // Убираем курсор на планшетах и телефонах
+    //     [theme.breakpoints.down('sm')]: {
+    //         display: 'none',
+    //     },
+    //
+    // })
 
     function cursorMove() {
 
@@ -91,7 +108,7 @@ const Cursor: FC = () => {
 
             } else {
 
-                if(target.className !== 'Cursor'){
+                if (target.className !== 'Cursor') {
 
                     setCursorParams(prevState => {
 
@@ -106,7 +123,7 @@ const Cursor: FC = () => {
 
     useEffect(() => {
 
-        if (isCursorVisible){
+        if (isCursorVisible) {
             cursorMove()
         }
 
@@ -114,7 +131,7 @@ const Cursor: FC = () => {
 
 
     return (
-        <S_Cursor/>
+        <Box component={Styles} className={'Cursor'}/>
     )
 
 }

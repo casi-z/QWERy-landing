@@ -2,7 +2,7 @@ import useMenuBurgerStyles, * as S from './MenuBurger.style'
 import { ReactChild, FC, useState } from 'react'
 import {Button, Divider } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
-import useMenuItemStyles from '@/components/MenuItem/MenuItem.style';
+import MenuItem from '@/components/MenuItem/MenuItem';
 import { IMenuItem } from '@/types/types';
 import { ReactComponent as Logo } from '@/svg/Logo.svg'
 const { log } = console
@@ -18,7 +18,6 @@ const MenuBurger: FC<MenuBurgerProps> = ({ children, menuItems }) => {
 
     const S = useMenuBurgerStyles()
 
-    const MenuItemStyles = useMenuItemStyles()
 
     const [isMenuBurgerOpen, setIsMenuBurgerOpen] = useState(false)
 
@@ -40,19 +39,19 @@ const MenuBurger: FC<MenuBurgerProps> = ({ children, menuItems }) => {
 				
                 {menuItems.map((menuItem, index) => (
                         
-                    <MenuItemStyles.MenuItem
+                    <MenuItem
                         key={index}
                         href={menuItem.href}
                         onClick={() => setIsMenuBurgerOpen(false)}
 				        onKeyDown={() => setIsMenuBurgerOpen(false)}
                     >
 							{menuItem.name}
-                    </MenuItemStyles.MenuItem>
+                    </MenuItem>
                     
 				))}
 				
 				<Divider />
-                
+                {children}
             </S.MenuBurger__Items>
 
             <Button

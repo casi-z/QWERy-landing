@@ -1,18 +1,19 @@
 import {
     Box,
-    styled,
+
     useTheme
 } from "@mui/material"
+
+import styled from 'styled-components'
 
 function useMenuStyles() {
 
     const theme = useTheme()
         
-    return {
-        Menu: styled(Box)({
-            display: 'flex',
-            
-        })
-    }
+    return styled.nav`
+      display: flex;
+      
+    `
+
 }
 export default useMenuStyles

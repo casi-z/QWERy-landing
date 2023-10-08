@@ -10,15 +10,17 @@ interface ThemeProviderProps {
 
 const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
     
-    //Задаю отступы слева и справа для всего сайта
 
-    const [sitePadding, setSitePadding] = useState(`15vw`)
 
     //Создаю тему
 
 	const theme = useMemo(
 		() => createTheme({
             palette: {
+                primary: {
+                    main: '#fff',
+                    dark: '#FFA343'
+                },
                 text: {
                     primary: '#fff',
                     secondary: '#FBD784',
@@ -26,27 +28,17 @@ const ThemeProvider: FC<ThemeProviderProps> = ({ children }) => {
                 },
                 secondary: {
                     light: '#FFF',
-                    main: '#043873',
+                    main: '#000',
                     dark: '#043873',
                     
                 }
             },
             
-		}), [sitePadding]
+		}), []
     )
     
     //Изменяю отступы при ресайзе окна
 
-    function changeSitePadding() {
-        if (theme.breakpoints.down('sm')) setSitePadding('0vw')
-            
-        else setSitePadding('15vw')
-    }
-
-
-    window.onresize = e => changeSitePadding()
-
-    useEffect(changeSitePadding, [])
 
 	return (
 		<StyledEngineProvider injectFirst>

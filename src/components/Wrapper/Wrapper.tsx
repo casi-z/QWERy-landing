@@ -1,30 +1,42 @@
 import {ReactChild, FC, ReactNode} from 'react'
-import { Box, styled } from '@mui/material'
+import {Box, Grid, useTheme} from '@mui/material'
+
 import {sitePadding} from "@/theme/GlobalStyle";
-import useConstants from "@/theme/constants";
-const { log } = console
+import styled from "styled-components";
+
+const {log} = console
 
 interface WrapperProps {
-   
-   children: ReactChild | ReactNode,
-   
+
+    children: ReactChild | ReactNode,
+
 }
 
 
+const Wrapper: FC<WrapperProps> = ({children}) => {
 
-const Wrapper: FC<WrapperProps> = ({ children }) => {
+    const theme = useTheme()
 
-    const constants = useConstants()
+    const Styles = styled.main`
+      padding: ${sitePadding};
+      overflow: visible;
+      background: ${theme.palette.secondary.main};
+      ${theme.breakpoints.down('sm')}{
+        padding: 0 5px;
+      }
+    `
 
-    const S_Wrapper = styled(Box)({
-        padding: constants.padding,
-        overflow: 'visible',
-    })
 
-    return(
-       <S_Wrapper className="Wrapper">
-           {children}
-       </S_Wrapper>
+    // const S_Wrapper = styled(Box) (({theme}) =>({
+    //     padding: sitePadding,
+    //     overflow: 'visible',
+    //     background: theme.palette.secondary.main,
+    // }))
+
+    return (
+        <Box component={Styles} className="Wrapper">
+            {children}
+        </Box>
     )
 }
 export default Wrapper
