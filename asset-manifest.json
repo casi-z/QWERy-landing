@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/qwery/static/css/main.ca2d68ea.css",
+    "main.js": "/qwery/static/js/main.1bbee595.js",
+    "static/media/background.png": "/qwery/static/media/background.4aba797cd52d3a5be09e.png",
+    "static/media/mountains-2.png": "/qwery/static/media/mountains-2.6a3768790f614e67c1ed.png",
+    "static/media/mountains.png": "/qwery/static/media/mountains.1f855333323bbacf5428.png",
+    "index.html": "/qwery/index.html",
+    "main.ca2d68ea.css.map": "/qwery/static/css/main.ca2d68ea.css.map",
+    "main.1bbee595.js.map": "/qwery/static/js/main.1bbee595.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ca2d68ea.css",
+    "static/js/main.1bbee595.js"
+  ]
+}
