@@ -1,16 +1,21 @@
 {
   "files": {
-    "main.css": "/qwery/static/css/main.ca2d68ea.css",
-    "main.js": "/qwery/static/js/main.1bbee595.js",
-    "static/media/background.png": "/qwery/static/media/background.4aba797cd52d3a5be09e.png",
-    "static/media/mountains-2.png": "/qwery/static/media/mountains-2.6a3768790f614e67c1ed.png",
-    "static/media/mountains.png": "/qwery/static/media/mountains.1f855333323bbacf5428.png",
-    "index.html": "/qwery/index.html",
-    "main.ca2d68ea.css.map": "/qwery/static/css/main.ca2d68ea.css.map",
-    "main.1bbee595.js.map": "/qwery/static/js/main.1bbee595.js.map"
+    "main.css": "/casi-z-webapp-pattern/static/css/main.f09e9de5.css",
+    "main.js": "/casi-z-webapp-pattern/static/js/main.bd93196d.js",
+    "static/media/background.png": "/casi-z-webapp-pattern/static/media/background.4aba797cd52d3a5be09e.png",
+    "static/media/mountains-2.png": "/casi-z-webapp-pattern/static/media/mountains-2.6a3768790f614e67c1ed.png",
+    "static/media/mountains.png": "/casi-z-webapp-pattern/static/media/mountains.1f855333323bbacf5428.png",
+    "static/media/Logo.svg": "/casi-z-webapp-pattern/static/media/Logo.24cc250ac2ca6ce596685cf7d39087f8.svg",
+    "index.html": "/casi-z-webapp-pattern/index.html",
+    "static/media/twitter.svg": "/casi-z-webapp-pattern/static/media/twitter.41ac8f4d08d8ea587fee9d7a19fdbad8.svg",
+    "static/media/instagram.svg": "/casi-z-webapp-pattern/static/media/instagram.e2c57745a56e96c4d922c02af027b23f.svg",
+    "static/media/search.svg": "/casi-z-webapp-pattern/static/media/search.b21ae8dac0c0b868b5df34e66613d8f4.svg",
+    "static/media/facebook.svg": "/casi-z-webapp-pattern/static/media/facebook.636eeb87cd09df6a4c370c1e6cd3662b.svg",
+    "main.f09e9de5.css.map": "/casi-z-webapp-pattern/static/css/main.f09e9de5.css.map",
+    "main.bd93196d.js.map": "/casi-z-webapp-pattern/static/js/main.bd93196d.js.map"
   },
   "entrypoints": [
-    "static/css/main.ca2d68ea.css",
-    "static/js/main.1bbee595.js"
+    "static/css/main.f09e9de5.css",
+    "static/js/main.bd93196d.js"
   ]
 }
